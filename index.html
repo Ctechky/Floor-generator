@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Floor Plan Generator</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "plotly.js-dist-min": "https://esm.sh/plotly.js-dist-min@^2.33.0",
+    "three": "https://esm.sh/three@^0.165.0",
+    "three/addons/": "https://esm.sh/three@^0.165.0/examples/jsm/",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.1/",
+    "react/": "https://esm.sh/react@^19.1.1/",
+    "three/": "https://esm.sh/three@^0.179.1/",
+    "react": "https://esm.sh/react@^19.1.1",
+    "fs": "https://esm.sh/fs@^0.0.1-security"
+  }
+}
+</script>
+<style>
+  :root {
+    --bg-primary: #f9fafb;
+    --bg-secondary: #f3f4f6;
+    --bg-tertiary: #ffffff;
+    --bg-interactive: #e5e7eb;
+    --bg-interactive-hover: #d1d5db;
+
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --text-on-accent: #ffffff;
+    --text-accent: #2563eb;
+
+    --border-primary: #d1d5db;
+    --border-secondary: #e5e7eb;
+    
+    --accent-primary: #3b82f6;
+    --accent-primary-hover: #2563eb;
+    --accent-secondary: #10b981;
+    --accent-secondary-hover: #059669;
+
+    --error-primary: #dc2626;
+    --error-primary-hover: #b91c1c;
+
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    
+    --canvas-bg: #e5e7eb;
+    --canvas-grid: rgba(0,0,0,0.1);
+    --canvas-tick: #6b7280;
+    --canvas-blocked-bg: #d1d5db;
+    --canvas-blocked-stroke: #9ca3af;
+    --canvas-room-stroke: #1f2937;
+    --canvas-outline: #2563eb;
+  }
+  
+  html.dark, html[data-theme="dark"] {
+    --bg-primary: #111827;
+    --bg-secondary: #1f2937;
+    --bg-tertiary: #374151;
+    --bg-interactive: #4b5563;
+    --bg-interactive-hover: #6b7280;
+
+    --text-primary: #f3f4f6;
+    --text-secondary: #d1d5db;
+    --text-on-accent: #ffffff;
+    --text-accent: #60a5fa;
+    
+    --border-primary: #4b5563;
+    --border-secondary: #374151;
+
+    --accent-primary: #3b82f6;
+    --accent-primary-hover: #60a5fa;
+    --accent-secondary: #34d399;
+    --accent-secondary-hover: #6ee7b7;
+    
+    --error-primary: #ef4444;
+    --error-primary-hover: #f87171;
+
+    --shadow-color: rgba(0, 0, 0, 0.5);
+
+    --canvas-bg: #1f2937;
+    --canvas-grid: rgba(255,255,255,0.1);
+    --canvas-tick: #9ca3af;
+    --canvas-blocked-bg: #111827;
+    --canvas-blocked-stroke: #000000;
+    --canvas-room-stroke: #e5e7eb;
+    --canvas-outline: #60a5fa;
+  }
+
+   body {
+      transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+  }
+
+  .btn {
+      transition: all 0.2s ease-in-out;
+      box-shadow: 0 1px 3px 0 var(--shadow-color);
+  }
+  .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -2px var(--shadow-color);
+  }
+  .btn:active {
+      transform: translateY(0);
+      box-shadow: 0 1px 3px 0 var(--shadow-color);
+  }
+  .btn:disabled, .btn[disabled] {
+      transform: none !important;
+      box-shadow: none !important;
+      cursor: not-allowed !important;
+      opacity: 0.6 !important;
+  }
+</style>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+{
+  "name": "AI Floor Plan Generator",
+  "description": "An intelligent tool for creating and optimizing floor plans. Key features include:\n- Customizable floor area and units (m, cm, mm).\n- Definition of room types with specific dimensions and quantities.\n- Placement of fixed 'blocked areas' like corridors or columns.\n- Generation of multiple, optimized layouts based on maximizing space and room diversity.\n- Interactive 2D and 3D visualization of generated plans.\n- Export options to DXF for CAD software and JSON for data archiving.",
+  "requestFramePermissions": []
+}
